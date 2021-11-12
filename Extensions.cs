@@ -1,3 +1,4 @@
+using System;
 using portfolio_backend.DTOs;
 using portfolio_backend.Models;
 
@@ -9,7 +10,7 @@ namespace portfolio_backend
         {
             return new FeedbackDTO
             {
-                Id = feedback.Id,
+                Id = Guid.NewGuid(),
                 Message = feedback.Message,
                 Name = feedback.Name
             };

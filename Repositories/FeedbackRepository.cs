@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using portfolio_backend.Models;
@@ -9,9 +10,9 @@ namespace portfolio_backend.Repositories
     {
         private readonly List<Feedback> feedbacks = new()
         {
-            new Feedback { Id = 1, Name = "John", Message = "good" },
-            new Feedback { Id = 2, Name = "mike", Message = "bad" },
-            new Feedback { Id = 3, Name = "boko", Message = "average" }
+            new Feedback { Id = Guid.NewGuid(), Name = "John", Message = "good" },
+            new Feedback { Id = Guid.NewGuid(), Name = "mike", Message = "bad" },
+            new Feedback { Id = Guid.NewGuid(), Name = "boko", Message = "average" }
         };
 
         public List<Feedback> GetFeedbacks()
@@ -19,10 +20,14 @@ namespace portfolio_backend.Repositories
             return feedbacks;
         }
 
-        public Feedback GetFeedback(int id)
+        public Feedback GetFeedback(Guid id)
         {
-
             return feedbacks.Where(feedback => feedback.Id == id).SingleOrDefault();
+        }
+
+        public void CreateFeedback(Feedback feedback)
+        {
+            feedbacks.Add(feedback);
         }
     }
 }

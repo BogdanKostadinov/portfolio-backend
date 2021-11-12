@@ -31,7 +31,7 @@ namespace portfolio_backend.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<FeedbackDTO> GetFeedback(int id)
+        public ActionResult<FeedbackDTO> GetFeedback(Guid id)
         {
             var item = repository.GetFeedback(id);
 
@@ -41,6 +41,22 @@ namespace portfolio_backend.Controllers
             }
 
             return item.asDTO();
+        }
+
+        //POST /feedback
+        [HttpPost]
+        public ActionResult<FeedbackDTO> CreateFeedback(FeedbackDTO feedbackDTO)
+        {
+            Feedback feedback = new()
+            {
+                Id = feedbackDTO.Id,
+                Message = feedbackDTO.Message,
+                Name = feedbackDTO.Name
+            };
+
+            repository.CreateFeedback(feedback);
+
+            return CreatedAtAction(nameof(GetFeedback), new {id = feedback.Id}, feedback.asDTO());
         }
     }
 }

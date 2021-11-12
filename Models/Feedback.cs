@@ -1,8 +1,10 @@
+using System;
+
 namespace portfolio_backend.Models
 {
     public class Feedback
     {
-        public int Id { get; set; }
+        public Guid Id { get; init; }
 
         public string Name { get; set; }
 
