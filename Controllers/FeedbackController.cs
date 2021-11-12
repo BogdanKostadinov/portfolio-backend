@@ -14,11 +14,11 @@ namespace portfolio_backend.Controllers
     [Route("feedback")]
     public class FeedbackController : ControllerBase
     {
-        private readonly FeedbackRepository repository;
+        private readonly IFeedbackRepository repository;
 
-        public FeedbackController()
+        public FeedbackController(IFeedbackRepository repository)
         {
-            repository = new FeedbackRepository();
+            this.repository = repository;
         }
         
         [HttpGet]

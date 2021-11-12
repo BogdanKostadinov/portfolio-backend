@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using portfolio_backend.Repositories;
 
 namespace portfolio_backend
 {
@@ -26,6 +27,8 @@ namespace portfolio_backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddSingleton<IFeedbackRepository, FeedbackRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

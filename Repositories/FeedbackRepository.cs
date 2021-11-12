@@ -4,7 +4,8 @@ using portfolio_backend.Models;
 
 namespace portfolio_backend.Repositories
 {
-    public class FeedbackRepository
+
+    public class FeedbackRepository : IFeedbackRepository
     {
         private readonly List<Feedback> feedbacks = new()
         {
