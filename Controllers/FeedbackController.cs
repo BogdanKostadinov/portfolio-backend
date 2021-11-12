@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using portfolio_backend.DTOs;
 using portfolio_backend.Models;
 using portfolio_backend.Repositories;
 
@@ -20,23 +21,26 @@ namespace portfolio_backend.Controllers
         {
             this.repository = repository;
         }
-        
+
         [HttpGet]
-        public List<Feedback> GetFeedbacks(){
-            return repository.GetFeedbacks();
+        public IEnumerable<FeedbackDTO> GetFeedbacks()
+        {
+            var feedbacks = repository.GetFeedbacks().Select(feedback => feedback.asDTO());
+
+            return feedbacks;
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Feedback> GetFeedback(int id)
+        public ActionResult<FeedbackDTO> GetFeedback(int id)
         {
-            var list = repository.GetFeedback(id);
-         
-            if (list is null)
+            var item = repository.GetFeedback(id);
+
+            if (item is null)
             {
                 return NotFound();
             }
 
-            return repository.GetFeedback(id);
+            return item.asDTO();
         }
     }
 }
