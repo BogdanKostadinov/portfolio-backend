@@ -10,5 +10,7 @@ namespace portfolio_backend.Repositories
         List<Feedback> GetFeedbacks();
 
         void CreateFeedback(Feedback feedback);
+
+        void UpdateFeedback(Feedback feedback);
     }
 }

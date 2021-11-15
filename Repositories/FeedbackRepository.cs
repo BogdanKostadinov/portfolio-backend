@@ -29,5 +29,12 @@ namespace portfolio_backend.Repositories
         {
             feedbacks.Add(feedback);
         }
+
+        public void UpdateFeedback(Feedback feedback)
+        {
+            var index = feedbacks.FindIndex(feedbackIndex => feedbackIndex.Id == feedback.Id);
+
+            feedbacks[index] = feedback;
+        }
     }
 }

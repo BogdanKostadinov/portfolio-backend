@@ -57,5 +57,26 @@ namespace portfolio_backend.Controllers
 
             return CreatedAtAction(nameof(GetFeedback), new {id = feedback.Id}, feedback.asDTO());
         }
+
+        //PUT /items/{id}
+        [HttpPut("{id}")]
+        public ActionResult UpdateFeedback(Guid id, UpdateFeedbackDTO feedbackDTO)
+        {
+            var existingFeedback = repository.GetFeedback(id);
+
+            if (existingFeedback is null)
+            {
+                return NotFound();
+            }
+
+            Feedback updatedFeedback = existingFeedback with {
+                Name = feedbackDTO.Name,
+                Message = feedbackDTO.Message
+            };
+
+            repository.UpdateFeedback(updatedFeedback);
+
+            return NoContent();
+        }
     }
 }
