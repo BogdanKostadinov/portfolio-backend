@@ -78,5 +78,21 @@ namespace portfolio_backend.Controllers
 
             return NoContent();
         }
+
+        //DELETE /feedback/{id}
+        [HttpDelete("{id}")]
+        public ActionResult DeleteItem(Guid id)
+        {
+            var existingFeedback = repository.GetFeedback(id);
+
+            if (existingFeedback is null)
+            {
+                return NotFound();
+            }
+
+            repository.DeleteItem(id);
+
+            return NoContent();
+        }
     }
 }

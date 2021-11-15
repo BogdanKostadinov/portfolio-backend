@@ -12,5 +12,7 @@ namespace portfolio_backend.Repositories
         void CreateFeedback(Feedback feedback);
 
         void UpdateFeedback(Feedback feedback);
+
+        void DeleteItem(Guid id);
     }
 }

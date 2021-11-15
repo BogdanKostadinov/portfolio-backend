@@ -36,5 +36,13 @@ namespace portfolio_backend.Repositories
 
             feedbacks[index] = feedback;
         }
+
+        public void DeleteItem(Guid id)
+        {
+            
+            var index = feedbacks.FindIndex(feedbackIndex => feedbackIndex.Id == id);           
+
+            feedbacks.RemoveAt(index);
+        }
     }
 }
