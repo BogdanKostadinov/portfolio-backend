@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace portfolio_backend.Models
 {
@@ -8,6 +9,7 @@ namespace portfolio_backend.Models
 
         public string Name { get; set; }
 
+        [Required]
         public string Message { get; set; }
 
     }

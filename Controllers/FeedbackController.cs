@@ -45,11 +45,10 @@ namespace portfolio_backend.Controllers
 
         //POST /feedback
         [HttpPost]
-        public ActionResult<FeedbackDTO> CreateFeedback(FeedbackDTO feedbackDTO)
+        public ActionResult<FeedbackDTO> CreateFeedback(CreateFeedbackDTO feedbackDTO)
         {
             Feedback feedback = new()
             {
-                Id = feedbackDTO.Id,
                 Message = feedbackDTO.Message,
                 Name = feedbackDTO.Name
             };
