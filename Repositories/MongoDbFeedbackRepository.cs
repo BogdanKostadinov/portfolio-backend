@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using portfolio_backend.Models;
 
@@ -9,6 +10,8 @@ namespace portfolio_backend.Repositories
     {
         private const string databaseName = "portfolio_backend";
         private const string collectionName = "feedbacks";
+
+        private readonly FilterDefinitionBuilder<Feedback> filterBuilder = Builders<Feedback>.Filter;
 
         private readonly IMongoCollection<Feedback> feedbacksCollection;
 
@@ -25,22 +28,25 @@ namespace portfolio_backend.Repositories
 
         public void DeleteItem(Guid id)
         {
-            throw new NotImplementedException();
+           var filter = filterBuilder.Eq(feedback => feedback.Id, id);
+            feedbacksCollection.DeleteOne(filter);
         }
 
         public Feedback GetFeedback(Guid id)
         {
-            throw new NotImplementedException();
+            var filter = filterBuilder.Eq(feedback => feedback.Id, id);
+            return feedbacksCollection.Find(filter).SingleOrDefault();
         }
 
         public List<Feedback> GetFeedbacks()
         {
-            throw new NotImplementedException();
+            return feedbacksCollection.Find(new BsonDocument()).ToList();
         }
 
         public void UpdateFeedback(Feedback feedback)
         {
-            throw new NotImplementedException();
+            var filter = filterBuilder.Eq(existingFeedback => existingFeedback.Id, feedback.Id);
+            feedbacksCollection.ReplaceOne(filter, feedback);
         }
     }
 }
