@@ -1,18 +1,20 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using portfolio_backend.Models;
 
 namespace portfolio_backend.Repositories
 {
     public interface IFeedbackRepository
     {
-        Feedback GetFeedback(Guid id);
-        List<Feedback> GetFeedbacks();
+        Task<Feedback> GetFeedbackAsync(Guid id);
 
-        void CreateFeedback(Feedback feedback);
+        Task<List<Feedback>> GetFeedbacksAsync();
 
-        void UpdateFeedback(Feedback feedback);
+        Task CreateFeedbackAsync(Feedback feedback);
 
-        void DeleteItem(Guid id);
+        Task UpdateFeedbackAsync(Feedback feedback);
+
+        Task DeleteItemAsync(Guid id);
     }
 }

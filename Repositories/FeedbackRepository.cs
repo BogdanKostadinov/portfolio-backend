@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using portfolio_backend.Models;
 
 namespace portfolio_backend.Repositories
@@ -15,34 +16,40 @@ namespace portfolio_backend.Repositories
             new Feedback { Id = Guid.NewGuid(), Name = "boko", Message = "average" }
         };
 
-        public List<Feedback> GetFeedbacks()
+        public async Task<List<Feedback>> GetFeedbacksAsync()
         {
-            return feedbacks;
+            return await Task.FromResult(feedbacks);
         }
 
-        public Feedback GetFeedback(Guid id)
+        public async Task<Feedback> GetFeedbackAsync(Guid id)
         {
-            return feedbacks.Where(feedback => feedback.Id == id).SingleOrDefault();
+            var result = feedbacks.Where(feedback => feedback.Id == id).SingleOrDefault();
+            return await Task.FromResult(result);
         }
 
-        public void CreateFeedback(Feedback feedback)
+        public async Task CreateFeedbackAsync(Feedback feedback)
         {
             feedbacks.Add(feedback);
+            await Task.CompletedTask;
         }
 
-        public void UpdateFeedback(Feedback feedback)
+        public async Task UpdateFeedbackAsync(Feedback feedback)
         {
             var index = feedbacks.FindIndex(feedbackIndex => feedbackIndex.Id == feedback.Id);
 
             feedbacks[index] = feedback;
+
+            await Task.CompletedTask;
         }
 
-        public void DeleteItem(Guid id)
+        public async Task DeleteItemAsync(Guid id)
         {
             
             var index = feedbacks.FindIndex(feedbackIndex => feedbackIndex.Id == id);           
 
             feedbacks.RemoveAt(index);
+
+            await Task.CompletedTask;
         }
     }
 }

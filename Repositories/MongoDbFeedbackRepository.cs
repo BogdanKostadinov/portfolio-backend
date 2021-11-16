@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using portfolio_backend.Models;
@@ -21,32 +22,32 @@ namespace portfolio_backend.Repositories
             feedbacksCollection = database.GetCollection<Feedback>(collectionName);
         }
 
-        public void CreateFeedback(Feedback feedback)
+        public async Task CreateFeedbackAsync(Feedback feedback)
         {
-            feedbacksCollection.InsertOne(feedback);
+            await feedbacksCollection.InsertOneAsync(feedback);
         }
 
-        public void DeleteItem(Guid id)
-        {
-           var filter = filterBuilder.Eq(feedback => feedback.Id, id);
-            feedbacksCollection.DeleteOne(filter);
-        }
-
-        public Feedback GetFeedback(Guid id)
+        public async Task DeleteItemAsync(Guid id)
         {
             var filter = filterBuilder.Eq(feedback => feedback.Id, id);
-            return feedbacksCollection.Find(filter).SingleOrDefault();
+            await feedbacksCollection.DeleteOneAsync(filter);
         }
 
-        public List<Feedback> GetFeedbacks()
+        public async Task<Feedback> GetFeedbackAsync(Guid id)
         {
-            return feedbacksCollection.Find(new BsonDocument()).ToList();
+            var filter = filterBuilder.Eq(feedback => feedback.Id, id);
+            return await feedbacksCollection.Find(filter).SingleOrDefaultAsync();
         }
 
-        public void UpdateFeedback(Feedback feedback)
+        public async Task<List<Feedback>> GetFeedbacksAsync()
+        {
+            return await feedbacksCollection.Find(new BsonDocument()).ToListAsync();
+        }
+
+        public async Task UpdateFeedbackAsync(Feedback feedback)
         {
             var filter = filterBuilder.Eq(existingFeedback => existingFeedback.Id, feedback.Id);
-            feedbacksCollection.ReplaceOne(filter, feedback);
+            await feedbacksCollection.ReplaceOneAsync(filter, feedback);
         }
     }
 }

@@ -43,7 +43,9 @@ namespace portfolio_backend
 
             services.AddSingleton<IFeedbackRepository, MongoDbFeedbackRepository>();
 
-            services.AddControllers();
+            services.AddControllers(options => {
+                options.SuppressAsyncSuffixInActionNames = false;
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "portfolio_backend", Version = "v1" });

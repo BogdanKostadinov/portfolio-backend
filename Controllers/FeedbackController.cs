@@ -23,17 +23,18 @@ namespace portfolio_backend.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<FeedbackDTO> GetFeedbacks()
+        public async Task<IEnumerable<FeedbackDTO>> GetFeedbacksAsync()
         {
-            var feedbacks = repository.GetFeedbacks().Select(feedback => feedback.asDTO());
+            var feedbacks = (await repository.GetFeedbacksAsync())
+                            .Select(feedback => feedback.asDTO());
 
             return feedbacks;
         }
 
         [HttpGet("{id}")]
-        public ActionResult<FeedbackDTO> GetFeedback(Guid id)
+        public async Task<ActionResult<FeedbackDTO>> GetFeedbackAsync(Guid id)
         {
-            var item = repository.GetFeedback(id);
+            var item = await repository.GetFeedbackAsync(id);
 
             if (item is null)
             {
@@ -45,7 +46,7 @@ namespace portfolio_backend.Controllers
 
         //POST /feedback
         [HttpPost]
-        public ActionResult<FeedbackDTO> CreateFeedback(CreateFeedbackDTO feedbackDTO)
+        public async Task<ActionResult<FeedbackDTO>> CreateFeedbackAsync(CreateFeedbackDTO feedbackDTO)
         {
             Feedback feedback = new()
             {
@@ -53,16 +54,16 @@ namespace portfolio_backend.Controllers
                 Name = feedbackDTO.Name
             };
 
-            repository.CreateFeedback(feedback);
+            await repository.CreateFeedbackAsync(feedback);
 
-            return CreatedAtAction(nameof(GetFeedback), new {id = feedback.Id}, feedback.asDTO());
+            return CreatedAtAction(nameof(GetFeedbackAsync), new {id = feedback.Id}, feedback.asDTO());
         }
 
         //PUT /items/{id}
         [HttpPut("{id}")]
-        public ActionResult UpdateFeedback(Guid id, UpdateFeedbackDTO feedbackDTO)
+        public async Task<ActionResult> UpdateFeedbackAsync(Guid id, UpdateFeedbackDTO feedbackDTO)
         {
-            var existingFeedback = repository.GetFeedback(id);
+            var existingFeedback = await repository.GetFeedbackAsync(id);
 
             if (existingFeedback is null)
             {
@@ -74,27 +75,25 @@ namespace portfolio_backend.Controllers
                 Message = feedbackDTO.Message
             };
 
-            repository.UpdateFeedback(updatedFeedback);
+            await repository.UpdateFeedbackAsync(updatedFeedback);
 
             return NoContent();
         }
 
         //DELETE /feedback/{id}
         [HttpDelete("{id}")]
-        public ActionResult DeleteItem(Guid id)
+        public async Task<ActionResult> DeleteItem(Guid id)
         {
-            var existingFeedback = repository.GetFeedback(id);
+            var existingFeedback = await repository.GetFeedbackAsync(id);
 
             if (existingFeedback is null)
             {
                 return NotFound();
             }
 
-            repository.DeleteItem(id);
+            await repository.DeleteItemAsync(id);
 
             return NoContent();
         }
-
-        //TODO MONGODB, POSTMAN
     }
 }
