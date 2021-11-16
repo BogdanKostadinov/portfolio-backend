@@ -27,3 +27,15 @@ D:\VS - my projects\portfolio-backend\obj\Debug\net5.0\portfolio-backend.dll
 D:\VS - my projects\portfolio-backend\obj\Debug\net5.0\ref\portfolio-backend.dll
 D:\VS - my projects\portfolio-backend\obj\Debug\net5.0\portfolio-backend.pdb
 D:\VS - my projects\portfolio-backend\obj\Debug\net5.0\portfolio-backend.genruntimeconfig.cache
+D:\VS - my projects\portfolio-backend\bin\Debug\net5.0\DnsClient.dll
+D:\VS - my projects\portfolio-backend\bin\Debug\net5.0\MongoDB.Bson.dll
+D:\VS - my projects\portfolio-backend\bin\Debug\net5.0\MongoDB.Driver.dll
+D:\VS - my projects\portfolio-backend\bin\Debug\net5.0\MongoDB.Driver.Core.dll
+D:\VS - my projects\portfolio-backend\bin\Debug\net5.0\MongoDB.Libmongocrypt.dll
+D:\VS - my projects\portfolio-backend\bin\Debug\net5.0\SharpCompress.dll
+D:\VS - my projects\portfolio-backend\bin\Debug\net5.0\runtimes\win\native\libzstd.dll
+D:\VS - my projects\portfolio-backend\bin\Debug\net5.0\runtimes\win\native\snappy32.dll
+D:\VS - my projects\portfolio-backend\bin\Debug\net5.0\runtimes\win\native\snappy64.dll
+D:\VS - my projects\portfolio-backend\bin\Debug\net5.0\runtimes\linux\native\libmongocrypt.so
+D:\VS - my projects\portfolio-backend\bin\Debug\net5.0\runtimes\osx\native\libmongocrypt.dylib
+D:\VS - my projects\portfolio-backend\bin\Debug\net5.0\runtimes\win\native\mongocrypt.dll
