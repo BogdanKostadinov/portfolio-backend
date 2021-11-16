@@ -39,3 +39,6 @@ D:\VS - my projects\portfolio-backend\bin\Debug\net5.0\runtimes\win\native\snapp
 D:\VS - my projects\portfolio-backend\bin\Debug\net5.0\runtimes\linux\native\libmongocrypt.so
 D:\VS - my projects\portfolio-backend\bin\Debug\net5.0\runtimes\osx\native\libmongocrypt.dylib
 D:\VS - my projects\portfolio-backend\bin\Debug\net5.0\runtimes\win\native\mongocrypt.dll
+D:\VS - my projects\portfolio-backend\bin\Debug\net5.0\HealthChecks.MongoDb.dll
+D:\VS - my projects\portfolio-backend\bin\Debug\net5.0\Microsoft.Extensions.Diagnostics.HealthChecks.dll
+D:\VS - my projects\portfolio-backend\bin\Debug\net5.0\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
