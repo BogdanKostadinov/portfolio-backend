@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/portfolio-backend.csproj",
+                "${workspaceFolder}/Portfolio.Api/Portfolio.Api.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -23,7 +23,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/portfolio-backend.csproj",
+                "${workspaceFolder}/Portfolio.Api/Portfolio.Api.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -36,7 +36,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/portfolio-backend.csproj",
+                "${workspaceFolder}/Portfolio.Api/Portfolio.Api.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -56,7 +56,7 @@
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/portfolio-backend.csproj"
+                "appProject": "${workspaceFolder}/Portfolio.Api/Portfolio.Api.csproj"
             }
         },
         {
@@ -72,7 +72,7 @@
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/portfolio-backend.csproj"
+                "appProject": "${workspaceFolder}/Portfolio.Api/Portfolio.Api.csproj"
             }
         },
         {
@@ -83,7 +83,7 @@
             ],
             "dockerRun": {},
             "netCore": {
-                "appProject": "${workspaceFolder}/portfolio-backend.csproj",
+                "appProject": "${workspaceFolder}/Portfolio.Api/Portfolio.Api.csproj",
                 "enableDebugging": true,
                 "configureSsl": false
             }
@@ -96,7 +96,7 @@
             ],
             "dockerRun": {},
             "netCore": {
-                "appProject": "${workspaceFolder}/portfolio-backend.csproj"
+                "appProject": "${workspaceFolder}/Portfolio.Api/Portfolio.Api.csproj"
             }
         }
     ]
