@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\VS - my projects\\portfolio-backend\\Portfolio.UnitTests\\Portfolio.UnitTests.csproj": {}
+    "d:\\VS - my projects\\portfolio-backend\\Portfolio.UnitTests\\Portfolio.UnitTests.csproj": {}
   },
   "projects": {
-    "D:\\VS - my projects\\portfolio-backend\\Portfolio.UnitTests\\Portfolio.UnitTests.csproj": {
+    "d:\\VS - my projects\\portfolio-backend\\Portfolio.Api\\Portfolio.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\VS - my projects\\portfolio-backend\\Portfolio.UnitTests\\Portfolio.UnitTests.csproj",
-        "projectName": "Portfolio.UnitTests",
-        "projectPath": "D:\\VS - my projects\\portfolio-backend\\Portfolio.UnitTests\\Portfolio.UnitTests.csproj",
+        "projectUniqueName": "d:\\VS - my projects\\portfolio-backend\\Portfolio.Api\\Portfolio.Api.csproj",
+        "projectName": "Portfolio.Api",
+        "projectPath": "d:\\VS - my projects\\portfolio-backend\\Portfolio.Api\\Portfolio.Api.csproj",
         "packagesPath": "C:\\Users\\Boko\\.nuget\\packages\\",
-        "outputPath": "D:\\VS - my projects\\portfolio-backend\\Portfolio.UnitTests\\obj\\",
+        "outputPath": "d:\\VS - my projects\\portfolio-backend\\Portfolio.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Boko\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,85 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "AspNetCore.HealthChecks.MongoDb": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.13.2, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "d:\\VS - my projects\\portfolio-backend\\Portfolio.UnitTests\\Portfolio.UnitTests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "d:\\VS - my projects\\portfolio-backend\\Portfolio.UnitTests\\Portfolio.UnitTests.csproj",
+        "projectName": "Portfolio.UnitTests",
+        "projectPath": "d:\\VS - my projects\\portfolio-backend\\Portfolio.UnitTests\\Portfolio.UnitTests.csproj",
+        "packagesPath": "C:\\Users\\Boko\\.nuget\\packages\\",
+        "outputPath": "d:\\VS - my projects\\portfolio-backend\\Portfolio.UnitTests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Boko\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "d:\\VS - my projects\\portfolio-backend\\Portfolio.Api\\Portfolio.Api.csproj": {
+                "projectPath": "d:\\VS - my projects\\portfolio-backend\\Portfolio.Api\\Portfolio.Api.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[16.9.4, )"
@@ -49,6 +128,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.0.2, )"
+            },
+            "moq": {
+              "target": "Package",
+              "version": "[4.16.1, )"
             },
             "xunit": {
               "target": "Package",

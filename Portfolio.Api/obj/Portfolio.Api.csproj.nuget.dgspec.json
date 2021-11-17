@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\VS - my projects\\portfolio-backend\\Portfolio.Api\\Portfolio.Api.csproj": {}
+    "d:\\VS - my projects\\portfolio-backend\\Portfolio.Api\\Portfolio.Api.csproj": {}
   },
   "projects": {
-    "D:\\VS - my projects\\portfolio-backend\\Portfolio.Api\\Portfolio.Api.csproj": {
+    "d:\\VS - my projects\\portfolio-backend\\Portfolio.Api\\Portfolio.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\VS - my projects\\portfolio-backend\\Portfolio.Api\\Portfolio.Api.csproj",
+        "projectUniqueName": "d:\\VS - my projects\\portfolio-backend\\Portfolio.Api\\Portfolio.Api.csproj",
         "projectName": "Portfolio.Api",
-        "projectPath": "D:\\VS - my projects\\portfolio-backend\\Portfolio.Api\\Portfolio.Api.csproj",
+        "projectPath": "d:\\VS - my projects\\portfolio-backend\\Portfolio.Api\\Portfolio.Api.csproj",
         "packagesPath": "C:\\Users\\Boko\\.nuget\\packages\\",
-        "outputPath": "D:\\VS - my projects\\portfolio-backend\\Portfolio.Api\\obj\\",
+        "outputPath": "d:\\VS - my projects\\portfolio-backend\\Portfolio.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Boko\\AppData\\Roaming\\NuGet\\NuGet.Config",
