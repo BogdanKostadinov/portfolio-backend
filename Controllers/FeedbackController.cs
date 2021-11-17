@@ -16,10 +16,12 @@ namespace portfolio_backend.Controllers
     public class FeedbackController : ControllerBase
     {
         private readonly IFeedbackRepository repository;
+        private readonly ILogger<FeedbackController> logger;
 
-        public FeedbackController(IFeedbackRepository repository)
+        public FeedbackController(IFeedbackRepository repository, ILogger<FeedbackController> logger)
         {
             this.repository = repository;
+            this.logger = logger;
         }
 
         [HttpGet]
@@ -27,6 +29,8 @@ namespace portfolio_backend.Controllers
         {
             var feedbacks = (await repository.GetFeedbacksAsync())
                             .Select(feedback => feedback.asDTO());
+
+            logger.LogInformation($"{DateTime.UtcNow.ToString("hh:mm:ss")}: Retrieved {feedbacks.Count()} feedbacks");
 
             return feedbacks;
         }
