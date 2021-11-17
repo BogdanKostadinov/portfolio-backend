@@ -54,12 +54,12 @@ namespace Portfolio.UnitTests
             //Assert
             result.Value.Should().BeEquivalentTo(expectedItem, options => options.ComparingByMembers<Feedback>());
         }
-        
+
         [Fact]
         public async Task GetFeedbacksAsync_WithExistingItems_ReturnsAllItems()
         {
             //Arrange
-            var expectedFeedbacks = new List<Feedback>(){};
+            var expectedFeedbacks = new List<Feedback>() { };
             expectedFeedbacks.Add(CreateRandomFeedback());
             expectedFeedbacks.Add(CreateRandomFeedback());
             expectedFeedbacks.Add(CreateRandomFeedback());
@@ -75,6 +75,26 @@ namespace Portfolio.UnitTests
 
             //Assert
             returnedItems.Should().BeEquivalentTo(expectedFeedbacks, options => options.ComparingByMembers<Feedback>());
+        }
+
+        [Fact]
+        public async Task CreateFeedbacksAsync_CreateFeedback_ReturnsCreatedFeedback()
+        {
+            var feedbackToCreate = new CreateFeedbackDTO(){
+                Name = Guid.NewGuid().ToString(),
+                Message = Guid.NewGuid().ToString()
+                
+            };
+            
+            var controller = new FeedbackController(repositoryStub.Object, loggerStub.Object);
+
+            var result = await controller.CreateFeedbackAsync(feedbackToCreate);
+
+            var createdFeedback = (result.Result as CreatedAtActionResult).Value as FeedbackDTO;
+
+            feedbackToCreate.Should().BeEquivalentTo(createdFeedback, options => options.ComparingByMembers<FeedbackDTO>().ExcludingMissingMembers());
+
+            createdFeedback.Id.Should().NotBeEmpty();
         }
 
         private Feedback CreateRandomFeedback()
