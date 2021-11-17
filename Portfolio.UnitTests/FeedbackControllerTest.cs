@@ -1,9 +1,12 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Portfolio.Api.Controllers;
+using Portfolio.Api.DTOs;
 using Portfolio.Api.Models;
 using Portfolio.Api.Repositories;
 using Xunit;
@@ -12,14 +15,16 @@ namespace Portfolio.UnitTests
 {
     public class FeedbackControllerTest
     {
+        private readonly Mock<IFeedbackRepository> repositoryStub = new();
+        private readonly Mock<ILogger<FeedbackController>> loggerStub = new();
+
         //NAMING CONVENTION
         //UnitOfWork_StateUnderTest_ExpectedBehavior
 
         [Fact]
-        public async Task GetFeedbacksAsync_WithUnexistingItem_ReturnsNotFound()
+        public async Task GetFeedbackAsync_WithUnexistingItem_ReturnsNotFound()
         {
             //Arrange
-            var repositoryStub = new Mock<IFeedbackRepository>();
             repositoryStub.Setup(repo => repo.GetFeedbackAsync(It.IsAny<Guid>()))
                 .ReturnsAsync((Feedback)null);
 
@@ -31,8 +36,55 @@ namespace Portfolio.UnitTests
             var result = await controller.GetFeedbackAsync(Guid.NewGuid());
 
             //Assert
-            Assert.IsType<NotFoundResult>(result.Result);
+            result.Result.Should().BeOfType<NotFoundResult>();
+        }
 
+        [Fact]
+        public async Task GetFeedbackAsync_WithExistingItem_ReturnsExpectedItem()
+        {
+            //Arrange
+            var expectedItem = CreateRandomFeedback();
+            repositoryStub.Setup(repo => repo.GetFeedbackAsync(It.IsAny<Guid>()))
+                .ReturnsAsync(expectedItem);
+            var controller = new FeedbackController(repositoryStub.Object, loggerStub.Object);
+
+            //Act
+            var result = await controller.GetFeedbackAsync(Guid.NewGuid());
+
+            //Assert
+            result.Value.Should().BeEquivalentTo(expectedItem, options => options.ComparingByMembers<Feedback>());
+        }
+        
+        [Fact]
+        public async Task GetFeedbacksAsync_WithExistingItems_ReturnsAllItems()
+        {
+            //Arrange
+            var expectedFeedbacks = new List<Feedback>(){};
+            expectedFeedbacks.Add(CreateRandomFeedback());
+            expectedFeedbacks.Add(CreateRandomFeedback());
+            expectedFeedbacks.Add(CreateRandomFeedback());
+
+
+            repositoryStub.Setup(repo => repo.GetFeedbacksAsync())
+                .ReturnsAsync(expectedFeedbacks);
+
+            var controller = new FeedbackController(repositoryStub.Object, loggerStub.Object);
+
+            //Act
+            var returnedItems = await controller.GetFeedbacksAsync();
+
+            //Assert
+            returnedItems.Should().BeEquivalentTo(expectedFeedbacks, options => options.ComparingByMembers<Feedback>());
+        }
+
+        private Feedback CreateRandomFeedback()
+        {
+            return new()
+            {
+                Id = Guid.NewGuid(),
+                Name = Guid.NewGuid().ToString(),
+                Message = Guid.NewGuid().ToString()
+            };
         }
     }
 }
